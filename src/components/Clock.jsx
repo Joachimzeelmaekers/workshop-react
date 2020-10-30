@@ -1,7 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react'
 
 const Clock = () => {
-  const title = 'Clocky'
   const [currentTime, setCurrentTime] = useState(new Date())
   const clockRef = useRef()
 
@@ -37,16 +36,17 @@ const Clock = () => {
   }
 
   return (
-    <div className={'clock'}>
-      <h3>{title}</h3>
-      <div className={'analog-clock'}>
-        <div className={'clock-circle'}></div>
-        <div className={'dial seconds'} style={secondsStyle} />
-        <div className={'dial minutes'} style={minutesStyle} />
-        <div className={'dial hours'} style={hoursStyle} />
-      </div>
-      <div className={'digital-clock'}>
-        {hours}:{padNumbers(minutes)}:{padNumbers(seconds)}
+    <div className="clock">
+      <div className="outer-clock-face">
+        <div className="marking marking-one"></div>
+        <div className="marking marking-two"></div>
+        <div className="marking marking-three"></div>
+        <div className="marking marking-four"></div>
+        <div className="inner-clock-face">
+          <div className="hand hour-hand" style={hoursStyle}></div>
+          <div className="hand min-hand" style={minutesStyle}></div>
+          <div className="hand second-hand" style={secondsStyle}></div>
+        </div>
       </div>
     </div>
   )
