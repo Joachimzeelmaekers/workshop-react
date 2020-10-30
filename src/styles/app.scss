@@ -7,7 +7,6 @@ $min-dial-length: 100px;
 $hour-dial-length: 70px;
 $hour-dial-top-height: 30px;
 
-body,
 #root {
   height: 100vh;
   width: 100vw;
@@ -15,11 +14,14 @@ body,
   font-size: 10px;
   text-align: center;
 }
+
 .App {
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-evenly;
 }
+
 html {
   font-size: 10px;
 }
@@ -38,7 +40,6 @@ body {
   height: 30rem;
   border: 7px solid #545271;
   border-radius: 50%;
-  margin: 50px auto;
   position: relative;
   padding: 2rem;
   -webkit-box-shadow: 0 20px 30px rgba(104, 75, 106, 0.65);

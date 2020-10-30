@@ -5,12 +5,12 @@ const Clock = () => {
   const clockRef = useRef()
 
   useEffect(() => {
-    setInterval(() => {
-      clockRef.current = setCurrentTime(new Date())
+    clockRef.current = setInterval(() => {
+      setCurrentTime(new Date())
     }, 1000)
 
     return () => {
-      clockRef.current?.clearInterval()
+      clearInterval(clockRef.current)
     }
   }, [])
 
