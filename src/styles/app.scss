@@ -1,0 +1,78 @@
+$white: white;
+$border-color: #000;
+$bg-grey: #cbd5e0;
+$clock-size: 200px;
+$sec-dial-length: 100px;
+$min-dial-length: 100px;
+$hour-dial-length: 70px;
+$hour-dial-top-height: 30px;
+
+body,
+#root {
+  background-color: #edf2f7;
+  height: 100vh;
+  width: 100vw;
+}
+.App {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.clock {
+  margin: 0 auto;
+  width: 120px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 5px;
+  position: relative;
+
+  .digital-clock {
+    padding: 10px;
+  }
+
+  .analog-clock {
+    width: $clock-size;
+    height: $clock-size;
+    border: solid 1px $border-color;
+    border-radius: 50%;
+    position: relative;
+    background: $white;
+
+    .dial {
+      position: absolute;
+      left: 50%;
+      width: $sec-dial-length;
+      height: $sec-dial-length;
+      transform-origin: bottom left;
+
+      &.seconds {
+        border-left: solid 1px green;
+      }
+      &.minutes {
+        border-left: solid 1px #cc0000;
+      }
+      &.hours {
+        width: $hour-dial-length;
+        height: $hour-dial-length;
+        top: $hour-dial-top-height;
+        border-left: solid 2px $border-color;
+      }
+    }
+
+    .clock-circle {
+      content: '';
+      z-index: 1;
+      background: white;
+      border: 1px solid black;
+      border-radius: 50%;
+      width: 5px;
+      height: 5px;
+      position: absolute;
+      top: calc(50% - 3px);
+      left: calc(50% - 3px);
+    }
+  }
+}
