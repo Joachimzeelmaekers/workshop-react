@@ -1,39 +1,32 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect, useRef} from 'react';
 
 const Clock = () => {
-  const [currentTime, setCurrentTime] = useState(new Date())
-  const clockRef = useRef()
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const clockRef = useRef();
 
   useEffect(() => {
     clockRef.current = setInterval(() => {
-      setCurrentTime(new Date())
-    }, 1000)
+      setCurrentTime(new Date());
+    }, 1000);
 
     return () => {
-      clearInterval(clockRef.current)
-    }
-  }, [])
+      clearInterval(clockRef.current);
+    };
+  }, []);
 
-  const seconds = currentTime.getSeconds()
-  const minutes = currentTime.getMinutes()
-  const hours = currentTime.getHours()
+  const seconds = currentTime.getSeconds();
+  const minutes = currentTime.getMinutes();
+  const hours = currentTime.getHours();
 
   const secondsStyle = {
     transform: `rotate(${seconds * 6}deg)`,
-  }
+  };
   const minutesStyle = {
     transform: `rotate(${minutes * 6}deg)`,
-  }
+  };
   const hoursStyle = {
     transform: `rotate(${hours * 30}deg)`,
-  }
-
-  const padNumbers = (number) => {
-    if (number > 9) {
-      return number
-    }
-    return `0${number}`
-  }
+  };
 
   return (
     <div className="clock">
@@ -49,7 +42,7 @@ const Clock = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Clock
+export default Clock;

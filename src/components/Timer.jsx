@@ -1,24 +1,22 @@
-import React from 'react'
+import React from 'react';
+import {msToTime} from '../utils/numberHelpers.js';
 
-function msToTime(duration) {
-  let milliseconds = parseInt((duration % 1000) / 100),
-    seconds = Math.floor((duration / 1000) % 60),
-    minutes = Math.floor((duration / (1000 * 60)) % 60)
-
-  minutes = minutes < 10 ? '0' + minutes : minutes
-  seconds = seconds < 10 ? '0' + seconds : seconds
-
-  return `${minutes}:${seconds}:${milliseconds}`
-}
+const timerStyle = {
+  color: '#555',
+  fontSize: '40px',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+};
 
 function Timer({timeStarted, currentTime}) {
   if (!timeStarted || !currentTime) {
-    return null
+    return <div style={timerStyle}>00:00:00</div>;
   }
 
-  const diffTime = Math.abs(currentTime - timeStarted)
+  const diffTime = Math.abs(currentTime - timeStarted);
 
-  return <div>{msToTime(diffTime)}</div>
+  return <div style={timerStyle}>{msToTime(diffTime)}</div>;
 }
 
-export default Timer
+export default Timer;
