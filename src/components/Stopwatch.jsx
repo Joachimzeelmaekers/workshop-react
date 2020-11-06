@@ -94,6 +94,7 @@ function Stopwatch() {
 
   return (
     <div
+      data-testid="stopwatch"
       style={{display: 'flex', justifyContent: 'space-between', width: '50%'}}
     >
       <div style={{display: 'flex', flexDirection: 'column', width: '200px'}}>
@@ -106,6 +107,7 @@ function Stopwatch() {
             <button
               className="m-1 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
               onClick={toggleIsStarted}
+              data-testid="start-button"
             >
               Start
             </button>
@@ -114,12 +116,14 @@ function Stopwatch() {
               <button
                 className="m-1 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
                 onClick={stopTimer}
+                data-testid="stop-button"
               >
                 Stop
               </button>
               <button
                 className="m-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
                 onClick={saveLap}
+                data-testid="lap-button"
               >
                 Lap
               </button>
@@ -135,16 +139,15 @@ function Stopwatch() {
           ) : null}
         </div>
       </div>
-      <div style={{height: '200px'}}>
+      <div data-testid="laps-container" style={{height: '200px'}}>
         {laps.map((lap) => {
           return (
-            <div style={lapStyle}>
+            <div style={lapStyle} key={`lap-${lap.number}`}>
               <p>Lap {lap.number}</p>
               <p>{lap.value}</p>
             </div>
           );
         })}
-        {}
       </div>
     </div>
   );
