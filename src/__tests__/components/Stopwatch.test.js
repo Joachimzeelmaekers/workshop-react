@@ -1,5 +1,14 @@
+// import {render, screen} from '@testing-library/react';
+// import Stopwatch from '../../components/Stopwatch';
 import {render, screen} from '@testing-library/react';
 import Stopwatch from '../../components/Stopwatch';
+
+test('Renders start button', () => {
+  render(<Stopwatch />);
+
+  const startButton = screen.getByTestId('start-button');
+  expect(startButton.textContent).toBe('Start');
+});
 
 const START_BUTTON_ID = 'start-button';
 const STOP_BUTTON_ID = 'stop-button';
@@ -14,13 +23,6 @@ const pressStartButton = () => {
 const renderStopwatchComponent = () => {
   render(<Stopwatch />);
 };
-
-test('Renders start button', () => {
-  renderStopwatchComponent();
-
-  const startButton = screen.getByTestId(START_BUTTON_ID);
-  expect(startButton.textContent).toBe('Start');
-});
 
 test('Renders stop and lap button only after pressing the start button', () => {
   renderStopwatchComponent();
