@@ -8,11 +8,8 @@ $hour-dial-length: 70px;
 $hour-dial-top-height: 30px;
 
 #root {
-  height: 100vh;
-  width: 100vw;
-  background-color: #edf2f7;
-  font-size: 10px;
-  text-align: center;
+  height: 100%;
+  width: 100%;
 }
 
 .App {
@@ -32,6 +29,7 @@ body {
   display: flex;
   flex: 1;
   min-height: 100vh;
+  height: 100%;
   align-items: center;
 }
 
@@ -161,4 +159,14 @@ body {
 .hand.second-hand {
   background: #ff5e5e;
   width: 40%;
+}
+
+.image-container {
+  display: flex;
+  flex-grow: 1;
+
+  .image {
+    max-height: 200px;
+    object-fit: contain;
+  }
 }
