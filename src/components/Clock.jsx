@@ -29,7 +29,7 @@ const Clock = () => {
   };
 
   return (
-    <div data-testid="clock" className="clock">
+    <div data-testid="clock" className="clock mt-5">
       <div className="outer-clock-face">
         <div className="marking marking-one"></div>
         <div className="marking marking-two"></div>

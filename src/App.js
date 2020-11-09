@@ -3,10 +3,12 @@ import Clock from './components/Clock';
 import Stopwatch from './components/Stopwatch';
 import {Route, Switch} from 'react-router-dom';
 import ShowsOverview from './pages/showsOverview/ShowsOverview';
+import Nav from './components/Nav';
 
 function App() {
   return (
     <div className="App">
+      <Nav />
       <Switch>
         <Route exact path="/" component={Clock} />
         <Route path="/stopwatch" component={Stopwatch} />
