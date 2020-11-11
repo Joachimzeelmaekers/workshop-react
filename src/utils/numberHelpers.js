@@ -1,6 +1,6 @@
 /**
- * @param duration: number
- * @returns a duration in the format 00 of type string.
+ * @param {number} duration
+ * @returns {string} a duration in the format 00.
  */
 export function padNumbers(number) {
   if (number > 9) {
@@ -10,8 +10,8 @@ export function padNumbers(number) {
 }
 
 /**
- * @param duration: number
- * @returns the milliseconds in the format 00:00:00 of type string.
+ * @param {number} duration
+ * @returns {string} the milliseconds in the format 00:00:00.
  */
 export function msToTime(duration) {
   let milliseconds = parseInt((duration % 1000) / 100),
@@ -24,9 +24,9 @@ export function msToTime(duration) {
   return `${minutes}:${seconds}:${padNumbers(milliseconds)}`;
 }
 /**
- * @param newestDate: Date
- * @param oldestDate: Date
- * @returns the diff between the 2 dates in milliseconds.
+ * @param {Date} newestDate
+ * @param {Date} oldestDate
+ * @returns {number} the diff between the 2 dates in milliseconds.
  */
 export function subtractDates(newestDate, oldestDate) {
   return Math.abs(oldestDate - newestDate);
