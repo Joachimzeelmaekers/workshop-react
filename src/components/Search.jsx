@@ -4,6 +4,7 @@ function Search({search, searchValue, setSearchValue}) {
   const handleSearch = () => {
     search(searchValue);
   };
+
   return (
     <div class="py-6 mr-2 relative text-gray-600 ">
       <input

@@ -44,7 +44,7 @@ function ShowsOverview() {
           const shortSummary = show.description.slice(0, 100) + '...';
           return (
             <div
-              className="image-container w-1/4 .max-w-sm p-2"
+              className="image-container w-1/4 max-w-sm p-2"
               key={`${show.name}-${show.id}`}
             >
               <div className="container rounded overflow-hidden shadow-lg hover:shadow-2xl cursor-pointer pt-1">
