@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import Rating from '../../components/Rating';
 
 // const API_URL = "https://api.tvmaze.com";
 
@@ -34,7 +35,7 @@ function ShowsOverview() {
                 <button className="my-6 text-blue-500 hover:text-blue-800">
                   Show full description
                 </button>
-                <div className="flex items-center mt-1">{show.rating}/10</div>
+                <Rating showId={show.id} rating={show.rating} />
               </div>
 
               <div className="px-6 pt-4 pb-2">
