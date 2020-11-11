@@ -1,16 +1,9 @@
 import React, {useState, useEffect, useRef, useMemo} from 'react';
 import {msToTime} from '../utils/numberHelpers';
+import Lap from './Lap';
 import Timer from './Timer';
 
 const INTERVAL = 10;
-
-const lapStyle = {
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  width: '200px',
-  padding: '0.2em',
-};
 
 function Stopwatch() {
   const [timeStarted, setTimeStarted] = useState();
@@ -93,61 +86,58 @@ function Stopwatch() {
   };
 
   return (
-    <div
-      data-testid="stopwatch"
-      style={{display: 'flex', justifyContent: 'space-between', width: '50%'}}
-    >
-      <div style={{display: 'flex', flexDirection: 'column', width: '200px'}}>
-        <Timer
-          timeStarted={isStarted ? timeStarted : savedTimeStarted}
-          currentTime={isStarted ? currentTime : savedCurrentTime}
-        />
-        <div className="button-container">
-          {!isStarted ? (
-            <button
-              className="m-1 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-              onClick={toggleIsStarted}
-              data-testid="start-button"
-            >
-              Start
-            </button>
-          ) : (
-            <>
+    <div className="page-container">
+      <div
+        data-testid="stopwatch"
+        style={{display: 'flex', justifyContent: 'space-between', width: '50%'}}
+      >
+        <div style={{display: 'flex', flexDirection: 'column', width: '200px'}}>
+          <Timer
+            timeStarted={isStarted ? timeStarted : savedTimeStarted}
+            currentTime={isStarted ? currentTime : savedCurrentTime}
+          />
+          <div className="button-container">
+            {!isStarted ? (
               <button
-                className="m-1 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                onClick={stopTimer}
-                data-testid="stop-button"
+                className="m-1 bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                onClick={toggleIsStarted}
+                data-testid="start-button"
               >
-                Stop
+                Start
               </button>
+            ) : (
+              <>
+                <button
+                  className="m-1 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                  onClick={stopTimer}
+                  data-testid="stop-button"
+                >
+                  Stop
+                </button>
+                <button
+                  className="m-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                  onClick={saveLap}
+                  data-testid="lap-button"
+                >
+                  Lap
+                </button>
+              </>
+            )}
+            {!isStarted && savedCurrentTime ? (
               <button
                 className="m-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-                onClick={saveLap}
-                data-testid="lap-button"
+                onClick={resetTimer}
               >
-                Lap
+                Reset
               </button>
-            </>
-          )}
-          {!isStarted && savedCurrentTime ? (
-            <button
-              className="m-1 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-              onClick={resetTimer}
-            >
-              Reset
-            </button>
-          ) : null}
+            ) : null}
+          </div>
         </div>
-      </div>
-      <div data-testid="laps-container" style={{height: '200px'}}>
-        {laps.map((lap) => {
-          return (
-            <div style={lapStyle} key={`lap-${lap.number}`}>
-              <p>Lap {lap.number}</p>
-              <p>{lap.value}</p>
-            </div>
-          );
-        })}
+        <div data-testid="laps-container" style={{height: '200px'}}>
+          {laps.map((lap) => {
+            return <Lap lap={lap} key={`lap-${lap.number}`} />;
+          })}
+        </div>
       </div>
     </div>
   );
