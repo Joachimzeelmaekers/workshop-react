@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef, useMemo} from 'react';
-import {msToTime} from '../utils/numberHelpers';
+import {msToTime, subtractDates} from '../utils/numberHelpers';
 import Lap from './Lap';
 import Timer from './Timer';
 
@@ -52,7 +52,7 @@ function Stopwatch() {
     return savedLaps
       .map((savedLap, index) => {
         const {timePressed, timeStarted} = savedLap || {};
-        const diffTime = Math.abs(timePressed - timeStarted);
+        const diffTime = subtractDates(timePressed, timeStarted);
         return {value: msToTime(diffTime), number: index + 1};
       })
       .reverse();
