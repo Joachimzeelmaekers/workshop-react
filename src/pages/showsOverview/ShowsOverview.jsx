@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useMemo} from 'react';
 import Card from '../../components/Card';
 import Search from '../../components/Search';
 
@@ -13,6 +13,12 @@ function ShowsOverview() {
     const data = await response.json();
     setShows(data);
   };
+
+  const genres = useMemo(() => {
+    return [...new Set(shows.map((show) => show.genres).flat())];
+  }, [shows]);
+
+  console.log(genres);
 
   useEffect(() => {
     if (!searchValue) {

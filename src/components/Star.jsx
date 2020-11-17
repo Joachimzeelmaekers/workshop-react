@@ -1,8 +1,6 @@
 import React from 'react';
 
 function Star({filled}) {
-  console.log(filled);
-
   const filledClass = `text-${filled ? 'yellow-600' : 'gray-400'}`;
   return (
     <svg

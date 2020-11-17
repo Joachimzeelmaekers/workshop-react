@@ -3,7 +3,6 @@ import Star from './Star';
 
 function Rating({rating, showId}) {
   const amountOfFilledStars = Math.round(rating / 2);
-  console.log(amountOfFilledStars);
 
   const stars = [
     ...new Array(amountOfFilledStars).fill(1),
