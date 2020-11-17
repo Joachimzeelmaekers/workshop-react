@@ -1,13 +1,20 @@
 import React, {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 import Rating from './Rating';
 
 function Card({show}) {
+  const history = useHistory();
   const [descriptionOpened, setDescriptionOpened] = useState(false);
   let description = descriptionOpened
     ? show.description
     : show.description.slice(0, 100) + '...';
+
+  const goToDetail = () => {
+    history.push(`/shows/${show.id}`);
+  };
+
   return (
-    <div className="image-container w-1/4 max-w-sm p-2">
+    <div className="image-container w-1/4 max-w-sm p-2" onClick={goToDetail}>
       <div className="container rounded overflow-hidden shadow-lg hover:shadow-2xl cursor-pointer pt-1">
         <img className="w-full image" src={show.image} alt={show.name} />
         <div className="px-6 py-4">
@@ -18,7 +25,10 @@ function Card({show}) {
           ></p>
           <button
             className="text-sm text-blue-500 hover:text-blue-800"
-            onClick={() => setDescriptionOpened((prevState) => !prevState)}
+            onClick={(event) => {
+              event.stopPropagation();
+              setDescriptionOpened((prevState) => !prevState);
+            }}
           >
             {descriptionOpened ? 'Toggle description' : 'Show full description'}
           </button>

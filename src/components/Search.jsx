@@ -1,6 +1,8 @@
 import React from 'react';
 
-function Search({search, searchValue, setSearchValue}) {
+function Search({search}) {
+  const [searchValue, setSearchValue] = React.useState('');
+
   const handleSearch = () => {
     search(searchValue);
   };
