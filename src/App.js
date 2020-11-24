@@ -12,10 +12,10 @@ function App() {
     <div className="App">
       <Nav />
       <Switch>
-        <Route exact path="/" component={Clock} />
+        <Route exact path="/shows" component={Clock} />
         <Route path="/stopwatch" component={Stopwatch} />
         <Route path="/shows/:show_id" component={ShowDetail} />
-        <Route exact path="/shows" component={ShowsOverview} />
+        <Route exact path="/" component={ShowsOverview} />
       </Switch>
     </div>
   );
