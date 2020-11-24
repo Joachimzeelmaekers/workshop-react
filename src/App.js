@@ -15,7 +15,7 @@ function App() {
         <Route exact path="/" component={Clock} />
         <Route path="/stopwatch" component={Stopwatch} />
         <Route path="/shows/:show_id" component={ShowDetail} />
-        <Route path="/shows" component={ShowsOverview} />
+        <Route exact path="/shows" component={ShowsOverview} />
       </Switch>
     </div>
   );
